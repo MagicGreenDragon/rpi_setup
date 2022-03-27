@@ -1,0 +1,13 @@
+[Unit]
+Description = Raspberry Pi Web Control Server
+After = local-fs.target network.target
+Wants = local-fs.target network.target
+
+[Service]
+Type = simple
+ExecStart = /opt/pyenv/bin/python /var/www/rpwcs/rpwcs.py
+Restart = always
+User = root
+
+[Install]
+WantedBy = multi-user.target

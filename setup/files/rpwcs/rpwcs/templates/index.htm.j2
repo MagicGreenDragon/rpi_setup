@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Raspberry Pi Web Control Server</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body>
+        <div class="title_main">Raspberry Pi Web Control Server</div>
+
+        <div class="content_value">Temperature: {{ raspi_system.temperature }}</div>
+        <div class="content_value">Mounts:</div>
+        <div class="content_subvalue">{{ raspi_system.mounts }}</div>
+        <input type="button" onclick="raspi_exec_service_op('raspi', 'shutdown', 'raspi_res', false)" value="Shutdown" />
+        <input type="button" onclick="raspi_exec_service_op('raspi', 'reboot', 'raspi_res', false)" value="Reboot" />
+        <input type="button" onclick="raspi_exec_service_op('raspi', 'remount', 'raspi_res', true);" value="Remount" />
+        <br/><span id="raspi_res"></span>
+        
+        {% for raspi_service in raspi_services %}<br/>
+        <div class="title_section">{{ raspi_service.displayname }}</div>
+        <div class="content_value">Status: {{ raspi_service.status }}</div>
+        {% if raspi_service.status != 'Absent' %}
+        <input type="button" onclick="raspi_exec_service_op('{{ raspi_service.name }}', 'start', '{{ raspi_service.name }}_op_res', true)" value="Start" />
+        <input type="button" onclick="raspi_exec_service_op('{{ raspi_service.name }}', 'stop', '{{ raspi_service.name }}_op_res', true)" value="Stop" />
+        <input type="button" onclick="raspi_exec_service_op('{{ raspi_service.name }}', 'restart', '{{ raspi_service.name }}_op_res', true)" value="Restart" />
+        <span id="{{ raspi_service.name }}_op_res"></span>
+        {% endif %}
+        {% endfor %}
+        
+        <script src="../static/scripts.js" charset="utf-8"></script>
+    </body>
+</html>

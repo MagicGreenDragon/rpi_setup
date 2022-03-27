@@ -1,0 +1,16 @@
+[Unit]
+Description = aMule Daemon
+After = local-fs.target network.target remote-fs.target
+Wants = local-fs.target network.target remote-fs.target
+
+[Service]
+Type = forking
+ExecStart = /etc/init.d/amule-daemon start
+ExecStop = /etc/init.d/amule-daemon stop
+ExecReload = /etc/init.d/amule-daemon restart
+TimeoutSec = 30
+Restart = on-abort
+User = amuled
+
+[Install]
+WantedBy = multi-user.target
