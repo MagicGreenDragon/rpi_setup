@@ -223,7 +223,7 @@ def rpwcs_raspi_get_temperature():
 @rpwcs_app.route('/raspi/mounts')
 def rpwcs_raspi_get_mounts():
     try:
-        return os.popen('df -h --output=target | grep "^/mnt"').read().strip().replace('/\n', '<br/>')
+        return os.popen('df -h --output=target | grep "^/mnt"').read().strip().replace('\n', '<br/>')
     except:
         return 'Unknown'
 
