@@ -1,12 +1,13 @@
 #!/bin/bash
 
 [[ $(whoami) != "root" ]] && echo "You must be root" && exit 1
-[[ $# != 3 ]] && echo "Usage: $0 DevUUID FSType MountPoint" && exit 1
+[[ $# != 4 ]] && echo "Usage: $0 DevUUID FSType MountPoint MountOptions" && exit 1
 
 #### Inputs
 export FSTAB_UUID=${1}
 export FSTAB_TYPE=${2}
 export FSTAB_MOUNT=${3}
+export FSTAB_OPTIONS=${4}
 
 #### RPi fstab Setup
 echo "######## RPi fstab Setup ########"
@@ -21,7 +22,7 @@ cat /etc/fstab
 
 # Configuring
 echo -e "\n## Configuring..."
-[[ $(grep ${FSTAB_UUID} /etc/fstab | wc -l) == 0 ]] && echo "UUID=${FSTAB_UUID} ${FSTAB_MOUNT} ${FSTAB_TYPE} rw,noexec,async,noatime,auto,nofail,nouser,nosymfollow 0 0" >> /etc/fstab
+[[ $(grep ${FSTAB_UUID} /etc/fstab | wc -l) == 0 ]] && echo "UUID=${FSTAB_UUID} ${FSTAB_MOUNT} ${FSTAB_TYPE} ${FSTAB_OPTIONS} 0 0" >> /etc/fstab
 
 # Fstab Post
 echo -e "\n## Fstab Post..."
