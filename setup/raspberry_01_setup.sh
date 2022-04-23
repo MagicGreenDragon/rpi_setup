@@ -17,7 +17,6 @@ echo -e "\n## Installing base software and upgrades..."
 export DEBIAN_FRONTEND=noninteractive
 apt -y update
 apt -y install apt-transport-https build-essential ca-certificates curl gawk git less lsb-release net-tools python3 python3-pip python3-venv p7zip-full sed unzip vim wget zip
-apt -y install ntfs-3g exfat-fuse exfat-utils
 apt -y update && apt -y upgrade --with-new-pkgs && apt -y autoremove && apt -y clean
 apt -y update && apt -y full-upgrade
 

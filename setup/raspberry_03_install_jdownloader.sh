@@ -26,8 +26,8 @@ export JD_MYJD_SETTINGS_JSON=${JD_CFG_PATH}/org.jdownloader.api.myjdownloader.My
 echo -e "######## JDownloader RPi Setup ########"
 
 # Installing prerequisites
-echo -e "\n## Installing prerequisites..."
-apt -y install openjdk-8-jre-headless
+echo -e "\n## Installing prerequisites (only if java is not installed)..."
+[[ ! -f /usr/bin/java ]] && apt -y install openjdk-8-jre-headless
 
 # Creating user
 echo -e "\n## Creating user..."
