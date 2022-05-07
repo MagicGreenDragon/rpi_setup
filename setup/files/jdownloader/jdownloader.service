@@ -8,7 +8,7 @@ Type = simple
 ExecStart = /usr/bin/java -Djava.awt.headless=true -jar /home/jdownloader/jd/JDownloader.jar
 PIDFile = /home/jdownloader/jd/JDownloader.pid
 TimeoutSec = 15
-Restart = on-failure
+Restart = no
 User = jdownloader
 
 [Install]
