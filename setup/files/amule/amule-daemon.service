@@ -11,6 +11,8 @@ ExecReload = /etc/init.d/amule-daemon restart
 TimeoutSec = 30
 Restart = on-abort
 User = amuled
+Group = amuled
+UMask = 0002
 
 [Install]
 WantedBy = multi-user.target

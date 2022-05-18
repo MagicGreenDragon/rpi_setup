@@ -10,6 +10,8 @@ PIDFile = /home/jdownloader/jd/JDownloader.pid
 TimeoutSec = 15
 Restart = no
 User = jdownloader
+Group = jdownloader
+UMask = 0002
 
 [Install]
 WantedBy = multi-user.target
