@@ -21,9 +21,9 @@ usermod -a -G video jellyfin
 # Adding Jellyfin systemd unit drop-in
 echo -e "\n## Adding Jellyfin systemd unit drop-in..."
 mkdir -vp /etc/systemd/system/jellyfin.service.d
-cp -v ./files/jellyfin/jellyfin.service.conf /etc/systemd/system/jellyfin.service.d/jellyfin.service.conf
-chown root:root /etc/systemd/system/jellyfin.service.d/jellyfin.service.conf
-chmod 644 /etc/systemd/system/jellyfin.service.d/jellyfin.service.conf
+cp -v ./files/jellyfin/99-jellyfin-cust-deps.conf /etc/systemd/system/jellyfin.service.d/99-jellyfin-cust-deps.conf
+chown root:root /etc/systemd/system/jellyfin.service.d/99-jellyfin-cust-deps.conf
+chmod 644 /etc/systemd/system/jellyfin.service.d/99-jellyfin-cust-deps.conf
 systemctl daemon-reload
 systemctl cat jellyfin
 
